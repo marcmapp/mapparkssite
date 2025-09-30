@@ -7,7 +7,7 @@ import Whatwedo from "../components/Whatwedo";
 
 // Import icons (you'll need to install react-icons)
 import { FiArrowRight } from "react-icons/fi";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -19,21 +19,13 @@ interface Props {}
 
 const Home: React.FC<Props> = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const servicesRef = useRef<HTMLDivElement>(null);
+
   const texts = [
     "Where the Future is Forged",
     "Building Tomorrow's Technology",
     "Innovation at Light Speed",
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
