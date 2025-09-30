@@ -36,7 +36,7 @@ jobs:
 
     - name: Deploy to S3 bucket
       run: |
-        aws s3 sync ./dist/ s3://${{ secrets.AWS_S3_BUCKET }} \
+        aws s3 sync ./dist/ s3://${{ secrets.AWS_S3_BUCKET }}/dist/ \
           --delete \
           --cache-control max-age=31536000,public \
           --size-only
