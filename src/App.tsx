@@ -10,10 +10,13 @@ import {
 } from 'react-router-dom';
 import Aos from 'aos';
 import Home from './pages/Home';
-import About from './pages/About';
 import Services from './pages/Services';
-import Products from './pages/Products';
-import Get from './pages/Get';
+import Process from './pages/Process';
+import Internships from './pages/Internships';
+import Courses from './pages/Courses';
+import RND from './pages/RND';
+import Contact from './pages/Contact';
+import ScrollToTop from './components/ScrollToTop';
 
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -26,6 +29,7 @@ import {
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
+  NavItems,
 } from "./components/ui/resizable-navbar";
 
 function App(): JSX.Element {
@@ -53,10 +57,25 @@ function App(): JSX.Element {
       link: "/services",
     },
     {
-      name: "Products",
-      link: "/products",
+      name: "Process",
+      link: "/process",
     },
-    
+    {
+      name: "Internships",
+      link: "/internships",
+    },
+    {
+      name: "Courses",
+      link: "/courses",
+    },
+    {
+      name: "R&D",
+      link: "/rnd",
+    },
+    {
+      name: "Contact",
+      link: "/contact",
+    },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -65,35 +84,34 @@ function App(): JSX.Element {
     setIsMobileMenuOpen(false);
   };
 
+  const handleNavClick = () => {
+    window.scrollTo(0, 0);
+    closeMobileMenu();
+  };
+
   return (
     <Router>
+      <ScrollToTop />
       {/* Navigation */}
       <motion.div 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-5 left-0 w-full z-50 transition-all duration-300 bg-transparent`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm`}
       >
         <Navbar>
           <NavBody>
+            {/* Mapp Arks Logo with image */}
             <NavbarLogo />
-            <nav className="flex items-center space-x-8">
-              {navItems.map((item, idx) => (
-                <Link
-                  key={idx}
-                  to={item.link}
-                  className="text-black dark:text-black hover:text-cyan-600 transition-colors font-medium"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
-            <div className="flex items-center gap-4">
-              <Link to="/login">
-                <NavbarButton variant="secondary">Login</NavbarButton>
-              </Link>
-              <Link to="/get">
-                <NavbarButton variant="primary">Book a call</NavbarButton>
+            
+            {/* Desktop Nav Items - using NavItems component for better spacing */}
+            <NavItems items={navItems} onItemClick={handleNavClick} />
+            
+            <div className="flex items-center gap-4 ml-4">
+              <Link to="/contact" onClick={handleNavClick}>
+                <NavbarButton variant="primary" className="bg-black text-white hover:bg-gray-800">
+                  Get Started
+                </NavbarButton>
               </Link>
             </div>
           </NavBody>
@@ -113,8 +131,8 @@ function App(): JSX.Element {
                 <Link
                   key={`mobile-link-${idx}`}
                   to={item.link}
-                  onClick={closeMobileMenu}
-                  className="relative text-neutral-600 dark:text-neutral-300 py-3 text-lg font-medium transition-colors hover:text-green-600 block"
+                  onClick={handleNavClick}
+                  className="relative text-gray-700 py-3 text-base font-medium transition-colors hover:text-black block"
                 >
                   <motion.div
                     whileHover={{ x: 5 }}
@@ -125,14 +143,9 @@ function App(): JSX.Element {
                 </Link>
               ))}
               <div className="flex w-full flex-col gap-4 mt-4">
-                <Link to="/login" onClick={closeMobileMenu}>
-                  <NavbarButton variant="primary" className="w-full">
-                    Login
-                  </NavbarButton>
-                </Link>
-                <Link to="/get" onClick={closeMobileMenu}>
-                  <NavbarButton variant="primary" className="w-full">
-                    Book a call
+                <Link to="/contact" onClick={handleNavClick}>
+                  <NavbarButton variant="primary" className="w-full bg-black text-white hover:bg-gray-800">
+                    Get Started
                   </NavbarButton>
                 </Link>
               </div>
@@ -144,11 +157,12 @@ function App(): JSX.Element {
       <div className="app-container">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/get" element={<Get />} />
-          <Route path="/login" element={<div className="min-h-screen flex items-center justify-center">Login Page - Coming Soon</div>} />
+          <Route path="/process" element={<Process />} />
+          <Route path="/internships" element={<Internships />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/rnd" element={<RND />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
     </Router>

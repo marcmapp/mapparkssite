@@ -1,331 +1,539 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-"use client";
-import image4 from "../assets/image8.jpeg";
-import AboutAniComp from "../components/AboutAniComp";
-import Cta from "../components/Cta";
-import Whatwedo from "../components/Whatwedo";
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { 
+  FaCode, 
+  FaPaintBrush, 
+  FaShoppingCart, 
+  FaCloud, 
+  FaMobileAlt,
+  FaHeadset,
+  FaRocket,
+  FaUsers,
+  FaGraduationCap,
+  FaBriefcase,
+  FaLightbulb,
+  FaBrain,
+  FaMagic,
+  FaArrowRight
+} from 'react-icons/fa';
+import {
+  SiReact, 
+  SiNextdotjs, 
+  SiTypescript, 
+  SiTailwindcss,
+  SiNodedotjs,
+  SiMongodb,
+  SiExpress,
+  SiAngular,
+  SiPython,
+  SiDjango,
+  SiDotnet,
+  SiDocker,
+  SiKubernetes,
+  SiGraphql,
+  SiPostgresql,
+  SiFirebase,
+  SiVuedotjs,
+  SiGithub,
+  SiGit,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiRedux,
+  SiJest,
+  SiCypress,
+  SiWebpack,
+  SiBabel,
+  SiSass,
+  SiLess,
+  SiBootstrap,
+  SiFigma,
+  SiAdobexd,
+  SiPostman,
+  SiJira,
+  SiConfluence,
+  SiSlack,
+  SiTrello,
+  SiWordpress,
+  SiShopify,
+  SiStripe,
+  SiGooglecloud,
+  SiHeroku,
+  SiDigitalocean,
+  SiNetlify,
+  SiVercel,
+  SiAmazon
+} from 'react-icons/si';
+import Footer from '../components/Footer';
+import { CardContainer, CardBody, CardItem } from '../components/ui/3d-card';
+import LogoLoop from '../components/ui/logo-loop';
 
-// Import icons (you'll need to install react-icons)
-import { FiArrowRight } from "react-icons/fi";
-import { useState, useEffect} from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import "./Home.css";
-import Footer from "../components/Footer";
-import { ThreeDMarqueeDemoSecond } from "../components/ThreeDMarqueeDemoSecond";
+import { CompareDemo } from '../components/ImageCompareDemo';
 
-interface Props {}
 
-const Home: React.FC<Props> = () => {
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
-  const texts = [
-    "Where the Future is Forged",
-    "Building Tomorrow's Technology",
-    "Innovation at Light Speed",
+const Home: React.FC = () => {
+  const [activeService, setActiveService] = useState(0);
+
+  const services = [
+    {
+      icon: <FaCode className="text-3xl" />,
+      title: "Custom Software Development",
+      description: "Tail-made applications to solve your unique business challenges"
+    },
+    {
+      icon: <FaPaintBrush className="text-3xl" />,
+      title: "Website Design & Development",
+      description: "Stunning, responsive websites that build your brand"
+    },
+    {
+      icon: <FaShoppingCart className="text-3xl" />,
+      title: "E-commerce Solutions",
+      description: "Powerful online stores that generate revenue"
+    },
+    {
+      icon: <FaCloud className="text-3xl" />,
+      title: "Cloud & DevOps",
+      description: "Scalable infrastructure and automated deployment"
+    },
+    {
+      icon: <FaMobileAlt className="text-3xl" />,
+      title: "Mobile App Development",
+      description: "Engaging mobile applications for iOS and Android"
+    },
+    {
+      icon: <FaHeadset className="text-3xl" />,
+      title: "Support & Maintenance",
+      description: "Your extended tech team for long-term success"
+    }
+  ];
+ const processSteps = [
+    { stage: "Research", description: "Deep dive into business challenges", icon: <FaBrain /> },
+    { stage: "Prototype", description: "Initial concept development", icon: <FaCode /> },
+    { stage: "Refine", description: "Iterative improvement cycles", icon: <FaMagic /> },
+    { stage: "Launch", description: "Production-ready solutions", icon: <FaRocket /> }
+  ];
+  const offerings = [
+    {
+      icon: <FaCode className="text-2xl" />,
+      title: "Services",
+      description: "Professional development services",
+      link: "/services",
+      bgColor: "bg-gradient-to-br from-blue-50 to-blue-100"
+    },
+    {
+      icon: <FaGraduationCap className="text-2xl" />,
+      title: "Courses",
+      description: "Industry-relevant skill development",
+      link: "/courses",
+      bgColor: "bg-gradient-to-br from-green-50 to-green-100"
+    },
+    {
+      icon: <FaBriefcase className="text-2xl" />,
+      title: "Internships",
+      description: "Real-world experience",
+      link: "/internships",
+      bgColor: "bg-gradient-to-br from-purple-50 to-purple-100"
+    },
+    {
+      icon: <FaLightbulb className="text-2xl" />,
+      title: "R&D",
+      description: "Innovative solutions in progress",
+      link: "/rnd",
+      bgColor: "bg-gradient-to-br from-yellow-50 to-yellow-100"
+    }
   ];
 
+  const stats = [
+    { value: "50+", label: "Projects Completed" },
+    { value: "100%", label: "Client Satisfaction" },
+    { value: "24/7", label: "Support Available" },
+    { value: "3+", label: "Years Experience" }
+  ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTextIndex((prev) => (prev + 1) % texts.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [texts.length]);
+  // Fixed technology logos with proper unique icons
+  const techLogos = [
+    // Frontend
+    { node: <SiReact className="text-4xl text-blue-500" />, title: "React", href: "https://react.dev" },
+   
+    { node: <SiTypescript className="text-4xl text-blue-600" />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+    { node: <SiTailwindcss className="text-4xl text-cyan-500" />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+    { node: <SiAngular className="text-4xl text-red-600" />, title: "Angular", href: "https://angular.io" },
+    { node: <SiVuedotjs className="text-4xl text-green-500" />, title: "Vue.js", href: "https://vuejs.org" },
+    { node: <SiJavascript className="text-4xl text-yellow-400" />, title: "JavaScript", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+    { node: <SiHtml5 className="text-4xl text-orange-500" />, title: "HTML5", href: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+    { node: <SiCss3 className="text-4xl text-blue-400" />, title: "CSS3", href: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+    { node: <SiRedux className="text-4xl text-purple-500" />, title: "Redux", href: "https://redux.js.org" },
+    { node: <SiBootstrap className="text-4xl text-purple-600" />, title: "Bootstrap", href: "https://getbootstrap.com" },
+    { node: <SiSass className="text-4xl text-pink-500" />, title: "Sass", href: "https://sass-lang.com" },
+    { node: <SiLess className="text-4xl text-blue-600" />, title: "Less", href: "https://lesscss.org" },
+    
+    // Backend
+    { node: <SiNodedotjs className="text-4xl text-green-600" />, title: "Node.js", href: "https://nodejs.org" },
+    { node: <SiPython className="text-4xl text-blue-400" />, title: "Python", href: "https://python.org" },
+    { node: <SiDjango className="text-4xl text-green-700" />, title: "Django", href: "https://djangoproject.com" },
+    { node: <SiDotnet className="text-4xl text-purple-600" />, title: ".NET", href: "https://dotnet.microsoft.com" },
+    { node: <SiGraphql className="text-4xl text-pink-600" />, title: "GraphQL", href: "https://graphql.org" },
+    
+    // Databases
+    { node: <SiMongodb className="text-4xl text-green-500" />, title: "MongoDB", href: "https://mongodb.com" },
+    { node: <SiPostgresql className="text-4xl text-blue-700" />, title: "PostgreSQL", href: "https://postgresql.org" },
+    { node: <SiFirebase className="text-4xl text-yellow-500" />, title: "Firebase", href: "https://firebase.google.com" },
+    
+    // Cloud & DevOps
+    { node: <SiAmazon className="text-4xl text-orange-500" />, title: "AWS", href: "https://aws.amazon.com" },
+    { node: <SiGooglecloud className="text-4xl text-blue-500" />, title: "Google Cloud", href: "https://cloud.google.com" },
+   
+    { node: <SiDocker className="text-4xl text-blue-400" />, title: "Docker", href: "https://docker.com" },
+    { node: <SiKubernetes className="text-4xl text-blue-500" />, title: "Kubernetes", href: "https://kubernetes.io" },
+    { node: <SiHeroku className="text-4xl text-purple-500" />, title: "Heroku", href: "https://heroku.com" },
+    { node: <SiDigitalocean className="text-4xl text-blue-400" />, title: "DigitalOcean", href: "https://digitalocean.com" },
+    { node: <SiNetlify className="text-4xl text-teal-500" />, title: "Netlify", href: "https://netlify.com" },
+    
+    
+    // Tools & Development
+    
+    { node: <SiGit className="text-4xl text-orange-600" />, title: "Git", href: "https://git-scm.com" },
+    { node: <SiFigma className="text-4xl text-purple-600" />, title: "Figma", href: "https://figma.com" },
+    { node: <SiAdobexd className="text-4xl text-pink-500" />, title: "Adobe XD", href: "https://adobe.com/products/xd" },
+    { node: <SiPostman className="text-4xl text-orange-500" />, title: "Postman", href: "https://postman.com" },
+    { node: <SiJira className="text-4xl text-blue-500" />, title: "Jira", href: "https://atlassian.com/software/jira" },
+    { node: <SiConfluence className="text-4xl text-blue-600" />, title: "Confluence", href: "https://atlassian.com/software/confluence" },
+    { node: <SiSlack className="text-4xl text-purple-500" />, title: "Slack", href: "https://slack.com" },
+    { node: <SiTrello className="text-4xl text-blue-500" />, title: "Trello", href: "https://trello.com" },
+    
+    // CMS & E-commerce
+    { node: <SiWordpress className="text-4xl text-blue-800" />, title: "WordPress", href: "https://wordpress.org" },
+    { node: <SiShopify className="text-4xl text-green-600" />, title: "Shopify", href: "https://shopify.com" },
+    { node: <SiStripe className="text-4xl text-purple-500" />, title: "Stripe", href: "https://stripe.com" },
+    
+    // Testing & Build Tools
+    { node: <SiJest className="text-4xl text-red-600" />, title: "Jest", href: "https://jestjs.io" },
+   
+    { node: <SiWebpack className="text-4xl text-blue-500" />, title: "Webpack", href: "https://webpack.js.org" },
+    { node: <SiBabel className="text-4xl text-yellow-500" />, title: "Babel", href: "https://babeljs.io" },
+  ];
 
   useEffect(() => {
     AOS.init({
       duration: 1000,
-      offset: 100,
       once: true,
-      easing: "ease-in-out",
     });
+    
+    const interval = setInterval(() => {
+      setActiveService((prev) => (prev + 1) % services.length);
+    }, 3000);
+    
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <>
-    <ThreeDMarqueeDemoSecond/>
-      <div className="relative w-full overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-green-100 rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-yellow-100 rounded-full blur-3xl opacity-20 animate-pulse-slow delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-10 animate-pulse-slow delay-500"></div>
-        </div>
-
-        {/* Hero Section */}
-        <section className="relative min-h-screen mt-20 flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-gray-950">
-          {/* Circuit board background */}
-          <div className="absolute inset-0 -z-10 overflow-hidden">
-            <div className="absolute inset-0 bg-grid-white/5 bg-[size:50px_50px]"></div>
-
-            {/* Animated circuit paths */}
-            <div className="absolute top-0 left-0 w-full h-full opacity-30">
-              <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 100 100"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M10,10 C30,15 50,30 70,20 C90,10 80,40 70,50 C60,60 40,70 20,60 C0,50 20,80 40,90 C60,100 80,80 90,70"
-                  stroke="url(#circuitGradient)"
-                  strokeWidth="0.3"
-                  fill="none"
-                  strokeDasharray="2"
-                  className="animate-dash"
-                />
-                <path
-                  d="M5,30 C25,40 45,20 65,30 C85,40 75,60 65,70 C55,80 35,90 15,80"
-                  stroke="url(#circuitGradient)"
-                  strokeWidth="0.2"
-                  fill="none"
-                  strokeDasharray="2"
-                  className="animate-dash delay-1000"
-                />
-                <defs>
-                  <linearGradient
-                    id="circuitGradient"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="100%"
-                  >
-                    <stop offset="0%" stopColor="#10B981" />
-                    <stop offset="50%" stopColor="#3B82F6" />
-                    <stop offset="100%" stopColor="#F59E0B" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-
-            {/* Floating tech elements */}
-            <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-green-500 rounded-full animate-float opacity-80"></div>
-            <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-blue-500 rounded-full animate-float delay-1000 opacity-80"></div>
-            <div className="absolute bottom-1/4 left-1/3 w-5 h-5 bg-yellow-500 rounded-full animate-float delay-2000 opacity-80"></div>
-            <div className="absolute bottom-1/3 right-1/3 w-2 h-2 bg-purple-500 rounded-full animate-float delay-3000 opacity-80"></div>
-          </div>
-
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            {/* Left column - content */}
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero Section with 3D Card */}
+      <section className="relative pt-32 pb-24 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="lg:w-1/2"
+            >
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-black text-white font-medium mb-6">
+                <span>Your Strategic Technology Partner</span>
+              </div>
+              
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
+                MAPP <span className="bg-transparent bg-gradient-to-r from-cyan-600 to-sky-700 text-transparent bg-clip-text">ARKS</span>
+              </h1>
+              
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-800">
+                Crafting Your <span className="text-black">Digital Future</span>
+              </h2>
+              
+              <p className="text-xl text-gray-600 mb-10 leading-relaxed">
+                Welcome to Mapp Arks, where innovation meets execution. 
+                We transform your vision into powerful digital solutions that drive business growth, 
+                enhance operational efficiency, and create lasting competitive advantages.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.a
+                  href="/contact"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center justify-center bg-black text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg hover:bg-gray-800"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  Start Your Project
+                  <FaRocket className="ml-2" />
+                </motion.a>
+                <motion.a
+                  href="/services"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center justify-center bg-transparent border-2 border-black text-black font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 hover:bg-black hover:text-white"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  View Our Services
+                </motion.a>
+              </div>
+            </motion.div>
+            
+            {/* 3D Card for Hero Section */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-left"
+              className="lg:w-1/2"
             >
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="inline-flex items-center px-4 py-2 rounded-full bg-gray-800 border border-gray-700 mb-8"
-              >
-                <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-                <span className="text-sm text-gray-300">
-                  Innovation in Progress
-                </span>
-              </motion.div>
-
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-                <span className="text-green-500">Reimagining</span>{" "}
-                <span className="text-white">Digital</span>
-                <br />
-                <span className="text-blue-500">Experiences</span>
-              </h1>
-
-              <div className="h-20 mb-6 overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.h2
-                    key={currentTextIndex}
-                    initial={{ y: 30, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -30, opacity: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="text-xl text-gray-400"
+              <CardContainer className="inter-var">
+                <CardBody className="bg-gray-50 relative group/card hover:shadow-2xl hover:shadow-gray-500/20 w-full h-auto rounded-2xl p-8 border border-cyan-300">
+                  <CardItem
+                    translateZ="50"
+                    className="text-2xl font-bold text-gray-900 mb-4"
                   >
-                    {texts[currentTextIndex]}
-                  </motion.h2>
-                </AnimatePresence>
-              </div>
-
-              <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                We're engineering{" "}
-                <span className="text-green-400 font-medium">
-                  next-generation solutions
-                </span>{" "}
-                that will transform how businesses operate. While we develop
-                these cutting-edge technologies, we offer{" "}
-                <span className="text-blue-400 font-medium">
-                  specialized services
-                </span>{" "}
-                to future-proof your organization.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="group relative px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition-all duration-300 flex items-center overflow-hidden">
-                  <span className="relative z-10">Discover Services</span>
-                  <div className="ml-2 relative z-10 transform group-hover:translate-x-1 transition-transform">
-                    <FiArrowRight />
+                    Our Expertise
+                  </CardItem>
+                  <CardItem
+                    as="p"
+                    translateZ="60"
+                    className="text-gray-600 text-lg mb-8"
+                  >
+                    We specialize in building modern digital solutions that drive business growth
+                  </CardItem>
+                  <CardItem translateZ="100" className="w-full mb-8">
+                    <div className="grid grid-cols-2 gap-4">
+                      {services.slice(0, 4).map((service, idx) => (
+                        <div
+                          key={idx}
+                          className={`p-4 rounded-xl ${idx === activeService ? 'bg-black text-white' : 'bg-white text-gray-900'} transition-all duration-300`}
+                        >
+                          <div className="mb-3">{service.icon}</div>
+                          <h3 className="font-bold">{service.title}</h3>
+                        </div>
+                      ))}
+                    </div>
+                  </CardItem>
+                  <div className="flex justify-between items-center">
+                    <CardItem
+                      translateZ={20}
+                      as="a"
+                      href="/services"
+                      className="px-4 py-2 rounded-xl text-sm font-normal text-gray-700 hover:text-black"
+                      onClick={() => window.scrollTo(0, 0)}
+                    >
+                      Explore all services →
+                    </CardItem>
+                    <CardItem
+                      translateZ={20}
+                      as="a"
+                      href="/contact"
+                      className="px-4 py-2 rounded-xl bg-black text-white text-sm font-bold hover:bg-gray-800"
+                      onClick={() => window.scrollTo(0, 0)}
+                    >
+                      Get Started
+                    </CardItem>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </button>
-
-                <button className="px-6 py-3 bg-gray-800 text-gray-200 border border-gray-700 rounded-lg font-medium hover:bg-gray-700 transition-all duration-300">
-                  View Innovation Pipeline
-                </button>
-              </div>
-            </motion.div>
-
-            {/* Right column - interactive tech visualization */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative"
-            >
-              <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 aspect-square flex items-center justify-center">
-                {/* Interactive circuit board */}
-                <div className="relative w-full h-full">
-                  <svg
-                    width="100%"
-                    height="100%"
-                    viewBox="0 0 100 100"
-                    className="rounded-lg"
-                  >
-                    {/* Circuit paths */}
-                    <path
-                      d="M20,20 L50,20 L50,50 L80,50"
-                      stroke="url(#pathGradient)"
-                      strokeWidth="1"
-                      fill="none"
-                      strokeDasharray="4"
-                      className="animate-dash"
-                    />
-                    <path
-                      d="M30,70 L50,70 L50,40"
-                      stroke="url(#pathGradient)"
-                      strokeWidth="1"
-                      fill="none"
-                      strokeDasharray="4"
-                      className="animate-dash delay-1000"
-                    />
-                    <path
-                      d="M70,30 L70,60 L40,60"
-                      stroke="url(#pathGradient)"
-                      strokeWidth="1"
-                      fill="none"
-                      strokeDasharray="4"
-                      className="animate-dash delay-2000"
-                    />
-
-                    {/* Circuit nodes */}
-                    <circle
-                      cx="20"
-                      cy="20"
-                      r="3"
-                      fill="#10B981"
-                      className="animate-pulse"
-                    />
-                    <circle
-                      cx="50"
-                      cy="20"
-                      r="2"
-                      fill="#3B82F6"
-                      className="animate-pulse delay-500"
-                    />
-                    <circle
-                      cx="50"
-                      cy="50"
-                      r="2"
-                      fill="#3B82F6"
-                      className="animate-pulse delay-1000"
-                    />
-                    <circle
-                      cx="80"
-                      cy="50"
-                      r="3"
-                      fill="#F59E0B"
-                      className="animate-pulse delay-1500"
-                    />
-                    <circle
-                      cx="30"
-                      cy="70"
-                      r="2"
-                      fill="#8B5CF6"
-                      className="animate-pulse delay-700"
-                    />
-                    <circle
-                      cx="50"
-                      cy="70"
-                      r="2"
-                      fill="#8B5CF6"
-                      className="animate-pulse delay-1200"
-                    />
-                    <circle
-                      cx="70"
-                      cy="30"
-                      r="2"
-                      fill="#EC4899"
-                      className="animate-pulse delay-300"
-                    />
-                    <circle
-                      cx="70"
-                      cy="60"
-                      r="2"
-                      fill="#EC4899"
-                      className="animate-pulse delay-900"
-                    />
-                    <circle
-                      cx="40"
-                      cy="60"
-                      r="3"
-                      fill="#10B981"
-                      className="animate-pulse delay-1700"
-                    />
-
-                    <defs>
-                      <linearGradient
-                        id="pathGradient"
-                        x1="0%"
-                        y1="0%"
-                        x2="100%"
-                        y2="100%"
-                      >
-                        <stop offset="0%" stopColor="#10B981" />
-                        <stop offset="50%" stopColor="#3B82F6" />
-                        <stop offset="100%" stopColor="#F59E0B" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-
-                  {/* Floating tech elements */}
-                  <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-green-500/20 rounded-full animate-ping"></div>
-                  <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-blue-500/20 rounded-full animate-ping delay-1000"></div>
-                  <div className="absolute bottom-1/3 left-1/3 w-5 h-5 bg-yellow-500/20 rounded-full animate-ping delay-2000"></div>
-                </div>
-              </div>
+                </CardBody>
+              </CardContainer>
             </motion.div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <AboutAniComp
-          id="about"
-          title="About Us"
-          content=""
-          imageSrc={image4}
-        />
+      {/* Stats Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {stats.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-4xl md:text-5xl font-bold text-black mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-gray-600 font-medium">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+{/* Process Visualization Section */}
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
+            Our <span className="text-gray-600">Process</span> in Action
+          </h2>
+          
+          <CompareDemo />
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto mt-12">
+            {processSteps.map((step, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="text-center"
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white mb-4">
+                  {step.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-gray-900">{step.stage}</h3>
+                <p className="text-gray-600">{step.description}</p>
+                {idx < processSteps.length - 1 && (
+                  <div className="hidden md:block absolute top-8 right-0 transform translate-x-1/2">
+                    <FaArrowRight className="text-gray-400" />
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Offerings Section with 3D Cards */}
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            data-aos="fade-up"
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Our <span className="text-gray-600">Offerings</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive solutions for all your digital needs
+            </p>
+          </motion.div>
 
-        <Cta
-          title="Let's Catch Up!"
-          content="Be part of the journey as we shape the future with cutting-edge tech solutions and groundbreaking products. Connect with us to explore opportunities, learn more about our offerings, or collaborate on something extraordinary."
-        />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {offerings.map((offering, idx) => (
+              <CardContainer key={idx} containerClassName="w-full h-full">
+                <CardBody className={`${offering.bgColor} relative group/card hover:shadow-2xl w-full h-full rounded-2xl p-8 border border-gray-200`}>
+                  <CardItem
+                    translateZ="50"
+                    className="text-gray-900 mb-6"
+                  >
+                    {offering.icon}
+                  </CardItem>
+                  <CardItem
+                    translateZ="60"
+                    className="text-xl font-bold text-gray-900 mb-4"
+                  >
+                    {offering.title}
+                  </CardItem>
+                  <CardItem
+                    translateZ="50"
+                    className="text-gray-600 mb-8"
+                  >
+                    {offering.description}
+                  </CardItem>
+                  <CardItem
+                    translateZ={20}
+                    as="a"
+                    href={offering.link}
+                    className="text-black font-medium flex items-center group-hover/card:translate-x-2 transition-transform duration-300"
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
+                    Learn More
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </CardItem>
+                </CardBody>
+              </CardContainer>
+            ))}
+          </div>
+        </div>
+      </section>
 
-        <Whatwedo />
+      {/* Technology Stack Section with LogoLoop */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              Our <span className="text-gray-600">Technology</span> Stack
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+              Modern technologies and tools for scalable, efficient, and future-proof solutions
+            </p>
+          </div>
 
-        <Footer />
-      </div>
-    </>
+          {/* Horizontal Logo Loop - removed fadeOut to eliminate black gradients */}
+          <div className="mb-16">
+            <div className="relative h-40 overflow-hidden">
+              <LogoLoop
+                logos={techLogos}
+                speed={80}
+                direction="left"
+                logoHeight={80}
+                gap={60}
+                pauseOnHover={true}
+                hoverSpeed={20}
+                fadeOut={false}
+                scaleOnHover={true}
+                ariaLabel="Technology stack and tools"
+                className="mx-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section with 3D Card */}
+      <section className="py-20 bg-gradient-to-r from-gray-900 to-black">
+        <div className="container mx-auto px-4">
+          <CardContainer containerClassName="w-full">
+            <CardBody className="bg-gradient-to-r from-gray-800 to-gray-900 relative group/card hover:shadow-2xl hover:shadow-gray-500/30 w-full h-auto rounded-2xl p-12">
+              <CardItem
+                translateZ="50"
+                className="text-4xl font-bold text-white mb-6 text-center"
+              >
+                Let's Build Something Extraordinary
+              </CardItem>
+              <CardItem
+                as="p"
+                translateZ="60"
+                className="text-xl text-gray-300 mb-10 text-center max-w-2xl mx-auto"
+              >
+                Whether you need a simple website, a complex enterprise application, or a groundbreaking mobile app, 
+                our team has the expertise and dedication to bring your vision to life.
+              </CardItem>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <CardItem
+                  translateZ={20}
+                  as="a"
+                  href="/contact"
+                  className="px-8 py-3 rounded-lg bg-white text-black font-bold hover:bg-gray-100 transition-all duration-300 text-center"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  Start Your Project Today
+                </CardItem>
+                <CardItem
+                  translateZ={20}
+                  as="a"
+                  href="tel:+919342139631"
+                  className="px-8 py-3 rounded-lg bg-transparent border-2 border-white text-white font-bold hover:bg-white/10 transition-all duration-300 text-center"
+                >
+                  Call Us Now
+                </CardItem>
+              </div>
+            </CardBody>
+          </CardContainer>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
   );
 };
 

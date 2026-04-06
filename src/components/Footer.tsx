@@ -76,7 +76,7 @@ const Footer: React.FC<Props> = () => {
     </ul>
         </div>
         <hr className="my-6 border-black sm:mx-auto dark:border-black lg:my-8" />
-        <span className="block text-sm text-black sm:text-center dark:black">© 2024 <a href="https://markpyroprime.com/" className="hover:underline">MAPP</a>. All Rights Reserved.</span>
+        <span className="block text-sm text-black sm:text-center dark:black">© 2025 <a href="https://markpyroprime.com/" className="hover:underline">MAPP</a>. All Rights Reserved.</span>
         {/* <a href = '/portal' className='text-white'>MP</a> */}
         
     </div>
