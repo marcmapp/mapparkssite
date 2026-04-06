@@ -9,10 +9,7 @@ import {
   FaCertificate,
   FaClock,
   FaUserGraduate,
-  FaStar,
-  FaServer,
-  FaJs,
-  FaPython
+  FaStar
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom'; // Add this import
 import Footer from '../components/Footer';

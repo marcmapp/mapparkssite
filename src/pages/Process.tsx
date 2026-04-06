@@ -14,7 +14,7 @@ import {
   FaShieldAlt,
   FaSync,
   FaBuilding,
-  FaCheckCircle
+
 } from 'react-icons/fa';
 import Footer from '../components/Footer';
 

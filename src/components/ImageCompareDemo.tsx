@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Compare } from "./ui/image-compare";
 
 export function CompareDemo() {
@@ -15,7 +15,6 @@ export function CompareDemo() {
           slideMode="hover"
           autoplay={true}
           autoplayDuration={5000}
-          autoplayDirection="right"
         />
       </div>
     </div>

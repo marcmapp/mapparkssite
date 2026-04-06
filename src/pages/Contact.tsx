@@ -7,7 +7,7 @@ import { Linkedin, Instagram, Twitter, MessageCircle } from "lucide-react";
 import Footer from "../components/Footer";
 import { motion } from 'framer-motion';
 import logo from "../assets/MP-removebg-preview.png";
-import { FaBuilding, FaCheckCircle } from "react-icons/fa";
+import { FaBuilding } from "react-icons/fa";
 
 const Contact: React.FC = () => {
   const [name, setName] = useState("");

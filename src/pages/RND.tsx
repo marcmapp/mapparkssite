@@ -9,9 +9,7 @@ import {
   FaLock,
   FaRocket,
   FaCogs,
-  FaMagic,
-  FaArrowRight,
-  FaCode
+
 } from 'react-icons/fa';
 import Footer from '../components/Footer';
 import { CardContainer, CardBody, CardItem } from '../components/ui/3d-card';

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  FaCode, 
-  FaDatabase,
+
+
   FaCloud,
   FaUsers,
   FaCalendarAlt,
@@ -11,7 +11,7 @@ import {
   FaCertificate,
   FaServer,
   FaReact,
-  FaNodeJs,
+
   FaAngular
 } from 'react-icons/fa';
 import Footer from '../components/Footer';

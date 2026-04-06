@@ -10,7 +10,7 @@ import {
   FaMobileAlt,
   FaHeadset,
   FaRocket,
-  FaUsers,
+
   FaGraduationCap,
   FaBriefcase,
   FaLightbulb,
@@ -20,12 +20,12 @@ import {
 } from 'react-icons/fa';
 import {
   SiReact, 
-  SiNextdotjs, 
+
   SiTypescript, 
   SiTailwindcss,
   SiNodedotjs,
   SiMongodb,
-  SiExpress,
+
   SiAngular,
   SiPython,
   SiDjango,
@@ -36,14 +36,14 @@ import {
   SiPostgresql,
   SiFirebase,
   SiVuedotjs,
-  SiGithub,
+
   SiGit,
   SiJavascript,
   SiHtml5,
   SiCss3,
   SiRedux,
   SiJest,
-  SiCypress,
+
   SiWebpack,
   SiBabel,
   SiSass,
@@ -63,7 +63,7 @@ import {
   SiHeroku,
   SiDigitalocean,
   SiNetlify,
-  SiVercel,
+  
   SiAmazon
 } from 'react-icons/si';
 import Footer from '../components/Footer';

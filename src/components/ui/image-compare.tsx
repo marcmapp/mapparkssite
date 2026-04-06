@@ -34,9 +34,10 @@ export const Compare = ({
 
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const [isMouseOver, setIsMouseOver] = useState(false);
+  // Remove unused isMouseOver state
+  // const [isMouseOver, setIsMouseOver] = useState(false);
 
-  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  const autoplayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const startAutoplay = useCallback(() => {
     if (!autoplay) return;
@@ -68,12 +69,12 @@ export const Compare = ({
   }, [startAutoplay, stopAutoplay]);
 
   function mouseEnterHandler() {
-    setIsMouseOver(true);
+    // Remove setIsMouseOver
     stopAutoplay();
   }
 
   function mouseLeaveHandler() {
-    setIsMouseOver(false);
+    // Remove setIsMouseOver
     if (slideMode === "hover") {
       setSliderXPercent(initialSliderPercentage);
     }
@@ -83,8 +84,9 @@ export const Compare = ({
     startAutoplay();
   }
 
+  // Add underscore to indicate intentionally unused parameter
   const handleStart = useCallback(
-    (clientX: number) => {
+    (_clientX: number) => {
       if (slideMode === "drag") {
         setIsDragging(true);
       }

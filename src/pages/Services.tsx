@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  FaCode, 
+
   FaLaptopCode, 
   FaShoppingCart, 
   FaCloud, 
   FaTools,
   FaDatabase,
   FaServer,
-  FaMobile,
+
   FaShieldAlt,
   FaSync,
   FaChartBar,
