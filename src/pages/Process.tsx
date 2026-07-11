@@ -88,9 +88,9 @@ const Process: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 bg-gradient-to-br from-gray-50 to-white">
+      <section className="relative pt-32 pb-24 bg-surface">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -98,15 +98,15 @@ const Process: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-black text-white font-medium mb-6">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-inverse text-inverse-foreground font-medium mb-6">
               <FaBuilding className="mr-2" />
               <span>AGILE & ADDIE</span>
             </div>
-            
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
-              Our <span className="text-gray-600">Development</span> Process
+
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+              Our <span className="text-accent">Development</span> Process
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-muted mb-8">
               A structured approach ensuring quality, transparency, and successful project delivery
             </p>
           </motion.div>
@@ -116,11 +116,11 @@ const Process: React.FC = () => {
   
 
       {/* Process Timeline */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="relative max-w-6xl mx-auto">
             {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-gray-300 to-gray-400 hidden md:block"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-border hidden md:block"></div>
             
             {processSteps.map((step, idx) => (
               <motion.div
@@ -133,13 +133,13 @@ const Process: React.FC = () => {
                 }`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-white border-4 border-gray-300 z-10 hidden md:block"></div>
-                
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-background border-4 border-accent z-10 hidden md:block"></div>
+
                 {/* Step content */}
                 <div className={`md:w-5/12 ${idx % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
                   <motion.div
                     whileHover={{ scale: 1.02 }}
-                    className={`bg-gradient-to-r ${step.color} rounded-2xl p-8 shadow-lg`}
+                    className="bg-gradient-to-r from-accent to-accent-strong rounded-2xl p-8 shadow-lg"
                   >
                     <div className={`flex items-center ${idx % 2 === 0 ? 'md:justify-end' : ''}`}>
                       <div className="mr-4 text-white">
@@ -164,11 +164,11 @@ const Process: React.FC = () => {
                 {/* Step number on mobile */}
                 <div className="md:hidden mb-4">
                   <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-gray-600 to-gray-800 flex items-center justify-center text-white font-bold">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-accent to-accent-strong flex items-center justify-center text-white font-bold">
                       {idx + 1}
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
+                      <h3 className="text-xl font-bold text-foreground">{step.title}</h3>
                     </div>
                   </div>
                 </div>
@@ -179,13 +179,13 @@ const Process: React.FC = () => {
       </section>
 
       {/* Methodologies */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-surface">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Our <span className="text-gray-600">Methodologies</span>
+            <h2 className="text-4xl font-bold text-foreground mb-6">
+              Our <span className="text-accent">Methodologies</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-muted max-w-3xl mx-auto">
               Proven approaches that ensure project success and client satisfaction
             </p>
           </div>
@@ -198,13 +198,13 @@ const Process: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="bg-white rounded-xl p-8 shadow-sm border border-gray-200 hover:border-black transition-all duration-300"
+                className="bg-background rounded-xl p-8 shadow-sm border border-border hover:border-accent transition-all duration-300"
               >
-                <div className="text-gray-900 mb-6">
+                <div className="text-accent mb-6">
                   {method.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{method.title}</h3>
-                <p className="text-gray-600">{method.description}</p>
+                <h3 className="text-xl font-bold text-foreground mb-4">{method.title}</h3>
+                <p className="text-muted">{method.description}</p>
               </motion.div>
             ))}
           </div>
@@ -212,11 +212,11 @@ const Process: React.FC = () => {
       </section>
 
       {/* Success Metrics */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Our <span className="text-gray-600">Success</span> Metrics
+            <h2 className="text-4xl font-bold text-foreground mb-6">
+              Our <span className="text-accent">Success</span> Metrics
             </h2>
           </div>
 
@@ -234,10 +234,10 @@ const Process: React.FC = () => {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="text-center"
               >
-                <div className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
+                <div className="text-5xl md:text-6xl font-bold text-foreground mb-4">
                   {metric.value}
                 </div>
-                <div className="text-lg font-medium text-gray-700">
+                <div className="text-lg font-medium text-muted">
                   {metric.label}
                 </div>
               </motion.div>

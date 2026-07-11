@@ -81,7 +81,7 @@ const Home: React.FC = () => {
     {
       icon: <FaCode className="text-3xl" />,
       title: "Custom Software Development",
-      description: "Tail-made applications to solve your unique business challenges"
+      description: "Tailor-made applications to solve your unique business challenges"
     },
     {
       icon: <FaPaintBrush className="text-3xl" />,
@@ -121,28 +121,28 @@ const Home: React.FC = () => {
       title: "Services",
       description: "Professional development services",
       link: "/services",
-      bgColor: "bg-gradient-to-br from-blue-50 to-blue-100"
+      bgColor: "bg-surface"
     },
     {
       icon: <FaGraduationCap className="text-2xl" />,
       title: "Courses",
       description: "Industry-relevant skill development",
       link: "/courses",
-      bgColor: "bg-gradient-to-br from-green-50 to-green-100"
+      bgColor: "bg-surface"
     },
     {
       icon: <FaBriefcase className="text-2xl" />,
       title: "Internships",
       description: "Real-world experience",
       link: "/internships",
-      bgColor: "bg-gradient-to-br from-purple-50 to-purple-100"
+      bgColor: "bg-surface"
     },
     {
       icon: <FaLightbulb className="text-2xl" />,
       title: "R&D",
       description: "Innovative solutions in progress",
       link: "/rnd",
-      bgColor: "bg-gradient-to-br from-yellow-50 to-yellow-100"
+      bgColor: "bg-surface"
     }
   ];
 
@@ -230,7 +230,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section with 3D Card */}
       <section className="relative pt-32 pb-24 overflow-hidden">
         <div className="container mx-auto px-4">
@@ -241,19 +241,19 @@ const Home: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="lg:w-1/2"
             >
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-black text-white font-medium mb-6">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-inverse text-inverse-foreground font-medium mb-6">
                 <span>Your Strategic Technology Partner</span>
               </div>
-              
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
-                MAPP <span className="bg-transparent bg-gradient-to-r from-cyan-600 to-sky-700 text-transparent bg-clip-text">ARKS</span>
+
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+                MAPP <span className="bg-transparent bg-gradient-to-r from-accent to-accent-strong text-transparent bg-clip-text">ARKS</span>
               </h1>
-              
-              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-800">
-                Crafting Your <span className="text-black">Digital Future</span>
+
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-foreground">
+                Crafting Your <span className="text-accent">Digital Future</span>
               </h2>
-              
-              <p className="text-xl text-gray-600 mb-10 leading-relaxed">
+
+              <p className="text-xl text-muted mb-10 leading-relaxed">
                 Welcome to Mapp Arks, where innovation meets execution. 
                 We transform your vision into powerful digital solutions that drive business growth, 
                 enhance operational efficiency, and create lasting competitive advantages.
@@ -264,7 +264,7 @@ const Home: React.FC = () => {
                   href="/contact"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center justify-center bg-black text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg hover:bg-gray-800"
+                  className="inline-flex items-center justify-center bg-inverse text-inverse-foreground font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg hover:opacity-90"
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   Start Your Project
@@ -274,7 +274,7 @@ const Home: React.FC = () => {
                   href="/services"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center justify-center bg-transparent border-2 border-black text-black font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 hover:bg-black hover:text-white"
+                  className="inline-flex items-center justify-center bg-transparent border-2 border-foreground text-foreground font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 hover:bg-foreground hover:text-background"
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   View Our Services
@@ -290,17 +290,17 @@ const Home: React.FC = () => {
               className="lg:w-1/2"
             >
               <CardContainer className="inter-var">
-                <CardBody className="bg-gray-50 relative group/card hover:shadow-2xl hover:shadow-gray-500/20 w-full h-auto rounded-2xl p-8 border border-cyan-300">
+                <CardBody className="bg-surface relative group/card hover:shadow-2xl hover:shadow-black/20 w-full h-auto rounded-2xl p-8 border border-accent/40">
                   <CardItem
                     translateZ="50"
-                    className="text-2xl font-bold text-gray-900 mb-4"
+                    className="text-2xl font-bold text-foreground mb-4"
                   >
                     Our Expertise
                   </CardItem>
                   <CardItem
                     as="p"
                     translateZ="60"
-                    className="text-gray-600 text-lg mb-8"
+                    className="text-muted text-lg mb-8"
                   >
                     We specialize in building modern digital solutions that drive business growth
                   </CardItem>
@@ -309,7 +309,7 @@ const Home: React.FC = () => {
                       {services.slice(0, 4).map((service, idx) => (
                         <div
                           key={idx}
-                          className={`p-4 rounded-xl ${idx === activeService ? 'bg-black text-white' : 'bg-white text-gray-900'} transition-all duration-300`}
+                          className={`p-4 rounded-xl ${idx === activeService ? 'bg-inverse text-inverse-foreground' : 'bg-background text-foreground'} transition-all duration-300`}
                         >
                           <div className="mb-3">{service.icon}</div>
                           <h3 className="font-bold">{service.title}</h3>
@@ -322,7 +322,7 @@ const Home: React.FC = () => {
                       translateZ={20}
                       as="a"
                       href="/services"
-                      className="px-4 py-2 rounded-xl text-sm font-normal text-gray-700 hover:text-black"
+                      className="px-4 py-2 rounded-xl text-sm font-normal text-muted hover:text-foreground"
                       onClick={() => window.scrollTo(0, 0)}
                     >
                       Explore all services →
@@ -331,7 +331,7 @@ const Home: React.FC = () => {
                       translateZ={20}
                       as="a"
                       href="/contact"
-                      className="px-4 py-2 rounded-xl bg-black text-white text-sm font-bold hover:bg-gray-800"
+                      className="px-4 py-2 rounded-xl bg-inverse text-inverse-foreground text-sm font-bold hover:opacity-90"
                       onClick={() => window.scrollTo(0, 0)}
                     >
                       Get Started
@@ -345,7 +345,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {stats.map((stat, idx) => (
@@ -356,10 +356,10 @@ const Home: React.FC = () => {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="text-center"
               >
-                <div className="text-4xl md:text-5xl font-bold text-black mb-2">
+                <div className="text-4xl md:text-5xl font-bold text-foreground mb-2">
                   {stat.value}
                 </div>
-                <div className="text-gray-600 font-medium">
+                <div className="text-muted font-medium">
                   {stat.label}
                 </div>
               </motion.div>
@@ -368,10 +368,10 @@ const Home: React.FC = () => {
         </div>
       </section>
 {/* Process Visualization Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-20 bg-surface">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
-            Our <span className="text-gray-600">Process</span> in Action
+          <h2 className="text-4xl font-bold text-center mb-16 text-foreground">
+            Our <span className="text-accent">Process</span> in Action
           </h2>
           
           <CompareDemo />
@@ -385,14 +385,14 @@ const Home: React.FC = () => {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="text-center"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-accent to-accent-strong text-white mb-4">
                   {step.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900">{step.stage}</h3>
-                <p className="text-gray-600">{step.description}</p>
+                <h3 className="text-xl font-bold mb-2 text-foreground">{step.stage}</h3>
+                <p className="text-muted">{step.description}</p>
                 {idx < processSteps.length - 1 && (
                   <div className="hidden md:block absolute top-8 right-0 transform translate-x-1/2">
-                    <FaArrowRight className="text-gray-400" />
+                    <FaArrowRight className="text-muted" />
                   </div>
                 )}
               </motion.div>
@@ -401,16 +401,16 @@ const Home: React.FC = () => {
         </div>
       </section>
       {/* Offerings Section with 3D Cards */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-20 bg-surface">
         <div className="container mx-auto px-4">
           <motion.div
             data-aos="fade-up"
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our <span className="text-gray-600">Offerings</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Our <span className="text-accent">Offerings</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-muted max-w-3xl mx-auto">
               Comprehensive solutions for all your digital needs
             </p>
           </motion.div>
@@ -418,22 +418,22 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {offerings.map((offering, idx) => (
               <CardContainer key={idx} containerClassName="w-full h-full">
-                <CardBody className={`${offering.bgColor} relative group/card hover:shadow-2xl w-full h-full rounded-2xl p-8 border border-gray-200`}>
+                <CardBody className={`${offering.bgColor} relative group/card hover:shadow-2xl w-full h-full rounded-2xl p-8 border border-border`}>
                   <CardItem
                     translateZ="50"
-                    className="text-gray-900 mb-6"
+                    className="text-accent mb-6"
                   >
                     {offering.icon}
                   </CardItem>
                   <CardItem
                     translateZ="60"
-                    className="text-xl font-bold text-gray-900 mb-4"
+                    className="text-xl font-bold text-foreground mb-4"
                   >
                     {offering.title}
                   </CardItem>
                   <CardItem
                     translateZ="50"
-                    className="text-gray-600 mb-8"
+                    className="text-muted mb-8"
                   >
                     {offering.description}
                   </CardItem>
@@ -441,7 +441,7 @@ const Home: React.FC = () => {
                     translateZ={20}
                     as="a"
                     href={offering.link}
-                    className="text-black font-medium flex items-center group-hover/card:translate-x-2 transition-transform duration-300"
+                    className="text-accent font-medium flex items-center group-hover/card:translate-x-2 transition-transform duration-300"
                     onClick={() => window.scrollTo(0, 0)}
                   >
                     Learn More
@@ -457,13 +457,13 @@ const Home: React.FC = () => {
       </section>
 
       {/* Technology Stack Section with LogoLoop */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Our <span className="text-gray-600">Technology</span> Stack
+            <h2 className="text-4xl font-bold text-foreground mb-6">
+              Our <span className="text-accent">Technology</span> Stack
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+            <p className="text-xl text-muted max-w-3xl mx-auto mb-12">
               Modern technologies and tools for scalable, efficient, and future-proof solutions
             </p>
           </div>

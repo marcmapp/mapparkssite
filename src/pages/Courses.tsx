@@ -100,35 +100,35 @@ const Courses: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               className="lg:w-1/2"
             >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
-                Master <span className="text-gray-600">In-Demand</span> Skills
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+                Master <span className="text-accent">In-Demand</span> Skills
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-muted mb-8">
                 Industry-relevant courses designed by professionals to accelerate your tech career
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <motion.button
                   onClick={() => document.getElementById('courses')?.scrollIntoView({ behavior: 'smooth' })}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-black text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-800 transition-all duration-300"
+                  className="bg-inverse text-inverse-foreground font-bold py-3 px-8 rounded-lg hover:opacity-90 transition-all duration-300"
                 >
                   View Courses
                 </motion.button>
                 <motion.button
                   onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-transparent border-2 border-black text-black font-bold py-3 px-8 rounded-lg hover:bg-black hover:text-white transition-all duration-300"
+                  className="bg-transparent border-2 border-foreground text-foreground font-bold py-3 px-8 rounded-lg hover:bg-foreground hover:text-background transition-all duration-300"
                 >
                   Why Choose Us
                 </motion.button>
@@ -138,39 +138,39 @@ const Courses: React.FC = () => {
             {/* 3D Card for Hero */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="lg:w-1/2"
             >
               <CardContainer className="inter-var">
-                <CardBody className="bg-gradient-to-br from-blue-50 to-cyan-50 relative group/card hover:shadow-2xl w-full h-auto rounded-2xl p-8 border border-blue-200">
+                <CardBody className="bg-surface relative group/card hover:shadow-2xl w-full h-auto rounded-2xl p-8 border border-accent/40">
                   <CardItem
                     translateZ="50"
-                    className="text-2xl font-bold text-gray-900 mb-4"
+                    className="text-2xl font-bold text-foreground mb-4"
                   >
                     Popular Tech Stacks
                   </CardItem>
                   <CardItem
                     as="p"
                     translateZ="60"
-                    className="text-gray-600 text-lg mb-8"
+                    className="text-muted text-lg mb-8"
                   >
                     Learn the most in-demand technologies used by top companies
                   </CardItem>
                   <div className="grid grid-cols-2 gap-4">
                     {[
-                      { icon: <FaReact className="text-2xl" />, name: "MERN Stack", color: "bg-blue-100" },
-                      { icon: <FaAngular className="text-2xl" />, name: "MEAN Stack", color: "bg-red-100" },
-                      { icon: <FaNodeJs className="text-2xl" />, name: "Node.js", color: "bg-green-100" },
-                      { icon: <FaDatabase className="text-2xl" />, name: "Databases", color: "bg-yellow-100" },
+                      { icon: <FaReact className="text-2xl" />, name: "MERN Stack" },
+                      { icon: <FaAngular className="text-2xl" />, name: "MEAN Stack" },
+                      { icon: <FaNodeJs className="text-2xl" />, name: "Node.js" },
+                      { icon: <FaDatabase className="text-2xl" />, name: "Databases" },
                     ].map((tech, idx) => (
                       <CardItem
                         key={idx}
                         translateZ="30"
-                        className={`${tech.color} p-4 rounded-xl text-center`}
+                        className="bg-background p-4 rounded-xl text-center border border-border"
                       >
-                        <div className="text-gray-900 mb-2">{tech.icon}</div>
-                        <div className="font-bold text-gray-900">{tech.name}</div>
+                        <div className="text-accent mb-2">{tech.icon}</div>
+                        <div className="font-bold text-foreground">{tech.name}</div>
                       </CardItem>
                     ))}
                   </div>
@@ -182,30 +182,30 @@ const Courses: React.FC = () => {
       </section>
 
       {/* Features with 3D Cards */}
-      <section id="features" className="py-20 bg-white">
+      <section id="features" className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
-            Course <span className="text-gray-600">Features</span>
+          <h2 className="text-4xl font-bold text-center mb-16 text-foreground">
+            Course <span className="text-accent">Features</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {courseFeatures.map((feature, idx) => (
               <CardContainer key={idx} containerClassName="w-full h-full">
-                <CardBody className="bg-gray-50 relative group/card hover:shadow-2xl w-full h-full rounded-xl p-8 text-center border border-gray-200">
+                <CardBody className="bg-surface relative group/card hover:shadow-2xl w-full h-full rounded-xl p-8 text-center border border-border">
                   <CardItem
                     translateZ="50"
-                    className="text-gray-900 mb-6"
+                    className="text-accent mb-6"
                   >
                     {feature.icon}
                   </CardItem>
                   <CardItem
                     translateZ="60"
-                    className="text-xl font-bold mb-4 text-gray-900"
+                    className="text-xl font-bold mb-4 text-foreground"
                   >
                     {feature.title}
                   </CardItem>
                   <CardItem
                     translateZ="50"
-                    className="text-gray-600"
+                    className="text-muted"
                   >
                     {feature.description}
                   </CardItem>
@@ -217,25 +217,25 @@ const Courses: React.FC = () => {
       </section>
 
       {/* Courses Grid with 3D Cards */}
-      <section id="courses" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section id="courses" className="py-20 bg-surface">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">
-            Our <span className="text-gray-600">Courses</span>
+          <h2 className="text-4xl font-bold text-center mb-4 text-foreground">
+            Our <span className="text-accent">Courses</span>
           </h2>
-          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+          <p className="text-muted text-center mb-12 max-w-2xl mx-auto">
             Choose from our comprehensive courses designed to make you industry-ready
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {courses.map((course, idx) => (
               <CardContainer key={idx} containerClassName="w-full h-full">
-                <CardBody className={`bg-gradient-to-r ${course.color} relative group/card hover:shadow-2xl w-full h-full rounded-2xl p-8 border border-opacity-20`}>
+                <CardBody className="bg-background relative group/card hover:shadow-2xl hover:border-accent w-full h-full rounded-2xl p-8 border border-border transition-colors">
                   {course.popular && (
                     <CardItem
                       translateZ="100"
                       className="absolute top-0 right-6 transform -translate-y-1/2"
                     >
-                      <span className="bg-white text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
+                      <span className="bg-accent text-white px-4 py-1 rounded-full text-sm font-bold">
                         Most Popular
                       </span>
                     </CardItem>
@@ -244,49 +244,49 @@ const Courses: React.FC = () => {
                   <div className="mb-6">
                     <CardItem
                       translateZ="50"
-                      className="p-3 bg-white/20 backdrop-blur-sm rounded-lg w-fit text-white mb-4"
+                      className="p-3 bg-surface-2 rounded-lg w-fit text-accent mb-4"
                     >
                       {course.icon}
                     </CardItem>
                     <CardItem
                       translateZ="60"
-                      className="text-2xl font-bold mb-4 text-white"
+                      className="text-2xl font-bold mb-4 text-foreground"
                     >
                       {course.title}
                     </CardItem>
                     <CardItem
                       translateZ="50"
-                      className="text-white/90 mb-6"
+                      className="text-muted mb-6"
                     >
                       {course.description}
                     </CardItem>
-                    
+
                     <CardItem
                       translateZ="40"
                       className="space-y-3 mb-6"
                     >
-                      <div className="flex items-center text-white/80">
-                        <FaClock className="mr-2" />
+                      <div className="flex items-center text-muted">
+                        <FaClock className="mr-2 text-accent" />
                         <span>{course.duration}</span>
                       </div>
-                      <div className="flex items-center text-white/80">
+                      <div className="flex items-center text-muted">
                         <span className="mr-2">Level:</span>
-                        <span className="font-medium">{course.level}</span>
+                        <span className="font-medium text-foreground">{course.level}</span>
                       </div>
-                     
+
                     </CardItem>
 
                     <CardItem
                       translateZ="30"
                       className="mb-8"
                     >
-                      <h4 className="font-bold mb-3 text-white">What You'll Learn:</h4>
+                      <h4 className="font-bold mb-3 text-foreground">What You'll Learn:</h4>
                       <div className="flex flex-wrap gap-2">
                         {course.features.map((feature, fIdx) => (
                           <CardItem
                             key={fIdx}
                             translateZ="20"
-                            className="px-3 py-1 bg-white/20 rounded-full text-sm text-white"
+                            className="px-3 py-1 bg-surface-2 rounded-full text-sm text-foreground"
                           >
                             {feature}
                           </CardItem>
@@ -294,12 +294,12 @@ const Courses: React.FC = () => {
                       </div>
                     </CardItem>
                   </div>
-                  
+
                   <CardItem
                     translateZ={20}
                     as="button"
-                    onClick={() => handleEnrollClick(course.title)} // Updated to use navigate function
-                    className="w-full bg-white text-gray-900 font-bold py-3 rounded-lg hover:bg-gray-100 transition-all duration-300"
+                    onClick={() => handleEnrollClick(course.title)}
+                    className="w-full bg-inverse text-inverse-foreground font-bold py-3 rounded-lg hover:opacity-90 transition-all duration-300"
                   >
                     Enroll Now
                   </CardItem>
@@ -311,10 +311,10 @@ const Courses: React.FC = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
-            Frequently Asked <span className="text-gray-600">Questions</span>
+          <h2 className="text-4xl font-bold text-center mb-16 text-foreground">
+            Frequently Asked <span className="text-accent">Questions</span>
           </h2>
 
           <div className="max-w-3xl mx-auto space-y-6">
@@ -341,10 +341,10 @@ const Courses: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-gray-50 rounded-xl p-6"
+                className="bg-surface rounded-xl p-6 border border-border"
               >
-                <h3 className="text-lg font-bold mb-2 text-gray-900">{faq.q}</h3>
-                <p className="text-gray-600">{faq.a}</p>
+                <h3 className="text-lg font-bold mb-2 text-foreground">{faq.q}</h3>
+                <p className="text-muted">{faq.a}</p>
               </motion.div>
             ))}
           </div>

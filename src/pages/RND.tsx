@@ -103,7 +103,7 @@ const RND: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 overflow-hidden">
         <div className="container mx-auto px-4">
@@ -113,25 +113,25 @@ const RND: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="max-w-6xl mx-auto text-center"
           >
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium mb-6">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-accent to-accent-strong text-white font-medium mb-6">
               <FaRocket className="mr-2" />
               <span>Innovation in Progress</span>
             </div>
-            
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
-              Building the <span className="text-gray-600">Future</span> of Business
+
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+              Building the <span className="text-accent">Future</span> of Business
             </h1>
-            <p className="text-2xl text-gray-600 mb-8">
+            <p className="text-2xl text-muted mb-8">
               Transforming entrepreneurship through innovative technology solutions
             </p>
-            
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 max-w-4xl mx-auto shadow-sm">
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                At Mapp Arks, our Research & Development division is dedicated to creating 
-                groundbreaking solutions that simplify the entrepreneurial journey. We're working 
+
+            <div className="bg-surface rounded-2xl p-8 border border-border max-w-4xl mx-auto shadow-sm">
+              <p className="text-lg text-muted leading-relaxed mb-6">
+                At Mapp Arks, our Research & Development division is dedicated to creating
+                groundbreaking solutions that simplify the entrepreneurial journey. We're working
                 on something special that will revolutionize how startups operate and grow.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-muted leading-relaxed">
                 While we're keeping the details under wraps for now, we're excited to share that 
                 we're leveraging advanced AI and automation technologies to build tools that will 
                 make running a business more efficient, intuitive, and successful.
@@ -144,31 +144,31 @@ const RND: React.FC = () => {
       
 
       {/* Focus Areas */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
-            Our <span className="text-gray-600">Focus</span> Areas
+          <h2 className="text-4xl font-bold text-center mb-16 text-foreground">
+            Our <span className="text-accent">Focus</span> Areas
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {focusAreas.map((area, idx) => (
               <CardContainer key={idx} containerClassName="w-full h-full">
-                <CardBody className="bg-gray-50 relative group/card hover:shadow-2xl w-full h-full rounded-xl p-8 text-center border border-gray-200">
+                <CardBody className="bg-surface relative group/card hover:shadow-2xl w-full h-full rounded-xl p-8 text-center border border-border">
                   <CardItem
                     translateZ="50"
-                    className="text-gray-900 mb-6"
+                    className="text-accent mb-6"
                   >
                     {area.icon}
                   </CardItem>
                   <CardItem
                     translateZ="60"
-                    className="text-xl font-bold mb-4 text-gray-900"
+                    className="text-xl font-bold mb-4 text-foreground"
                   >
                     {area.title}
                   </CardItem>
                   <CardItem
                     translateZ="50"
-                    className="text-gray-600"
+                    className="text-muted"
                   >
                     {area.description}
                   </CardItem>
@@ -180,12 +180,12 @@ const RND: React.FC = () => {
       </section>
 
       {/* Current Projects */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-20 bg-surface">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
-            Current <span className="text-gray-600">Initiatives</span>
+          <h2 className="text-4xl font-bold text-center mb-16 text-foreground">
+            Current <span className="text-accent">Initiatives</span>
           </h2>
-          
+
           <div className="space-y-12 max-w-5xl mx-auto">
             {projects.map((project, idx) => (
               <motion.div
@@ -193,30 +193,30 @@ const RND: React.FC = () => {
                 initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
-                className={`bg-gradient-to-r ${project.color} rounded-2xl p-8 shadow-lg`}
+                className="bg-background border border-border hover:border-accent transition-colors rounded-2xl p-8 shadow-lg"
               >
                 <div className="flex flex-col md:flex-row items-center gap-8">
                   <div className="flex-shrink-0">
-                    <div className="bg-white/20 backdrop-blur-sm p-6 rounded-xl">
+                    <div className="bg-surface-2 p-6 rounded-xl text-accent">
                       {project.icon}
                     </div>
                   </div>
-                  
+
                   <div className="flex-grow">
                     <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-3xl font-bold text-white">{project.title}</h3>
-                      <span className="px-3 py-1 bg-white/20 rounded-full text-sm text-white">
+                      <h3 className="text-3xl font-bold text-foreground">{project.title}</h3>
+                      <span className="px-3 py-1 bg-accent/15 text-accent rounded-full text-sm font-medium">
                         {project.stage}
                       </span>
                     </div>
-                    
-                    <p className="text-white/90 mb-6 leading-relaxed">
+
+                    <p className="text-muted mb-6 leading-relaxed">
                       {project.description}
                     </p>
-                    
+
                     <div className="flex flex-wrap gap-2">
                       {project.tech.map((tech, tIdx) => (
-                        <span key={tIdx} className="px-3 py-1 bg-white/20 rounded-full text-sm text-white">
+                        <span key={tIdx} className="px-3 py-1 bg-surface-2 rounded-full text-sm text-foreground">
                           {tech}
                         </span>
                       ))}
@@ -230,39 +230,39 @@ const RND: React.FC = () => {
       </section>
 
       {/* Teaser Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-yellow-100 text-yellow-800 mb-6">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-accent/15 text-accent mb-6">
               <FaLightbulb className="mr-2" />
               <span>Something Big Is Coming</span>
             </div>
-            
-            <h2 className="text-4xl font-bold mb-6 text-gray-900">
+
+            <h2 className="text-4xl font-bold mb-6 text-foreground">
               Revolutionizing Startup Operations
             </h2>
-            <p className="text-xl text-gray-600 mb-10 leading-relaxed">
-              We're building an intelligent platform that will transform how entrepreneurs 
-              manage their businesses. By combining AI, automation, and deep business insights, 
+            <p className="text-xl text-muted mb-10 leading-relaxed">
+              We're building an intelligent platform that will transform how entrepreneurs
+              manage their businesses. By combining AI, automation, and deep business insights,
               we're creating tools that will help startups thrive in today's competitive landscape.
             </p>
-            
-            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Stay Updated</h3>
-              <p className="text-gray-600 mb-6">
+
+            <div className="bg-surface rounded-2xl p-8 border border-border">
+              <h3 className="text-2xl font-bold mb-4 text-foreground">Stay Updated</h3>
+              <p className="text-muted mb-6">
                 Sign up to be the first to know about our upcoming product launch and get early access.
               </p>
-              
+
               {emailStatus && (
-                <div className={`mb-4 p-3 rounded-lg ${emailStatus.includes('Successfully') ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+                <div className={`mb-4 p-3 rounded-lg ${emailStatus.includes('Successfully') ? 'bg-green-50 text-green-800 border border-green-200 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800' : 'bg-red-50 text-red-800 border border-red-200 dark:bg-red-900/30 dark:text-red-300 dark:border-red-800'}`}>
                   {emailStatus}
                 </div>
               )}
-              
+
               <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-4">
                 <input
                   type="email"
@@ -270,11 +270,11 @@ const RND: React.FC = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
                   required
-                  className="flex-grow px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-900 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+                  className="flex-grow px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
                 />
-                <button 
+                <button
                   type="submit"
-                  className="bg-black text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-800 transition-all duration-300"
+                  className="bg-inverse text-inverse-foreground font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-all duration-300"
                 >
                   Get Notified
                 </button>

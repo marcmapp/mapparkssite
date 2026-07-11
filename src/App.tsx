@@ -17,6 +17,12 @@ import Courses from './pages/Courses';
 import RND from './pages/RND';
 import Contact from './pages/Contact';
 import ScrollToTop from './components/ScrollToTop';
+import ThemeToggle from './components/ThemeToggle';
+import { ArrowUpRight } from 'lucide-react';
+
+// Live product. When more products launch, this becomes a "Products"
+// dropdown in the nav that links out to each product's page/app.
+const PRODUCT_URL = "https://startupark.mapparks.com/";
 
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -72,10 +78,6 @@ function App(): JSX.Element {
       name: "R&D",
       link: "/rnd",
     },
-    {
-      name: "Contact",
-      link: "/contact",
-    },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -97,7 +99,7 @@ function App(): JSX.Element {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-background/95 backdrop-blur-md shadow-sm border-b border-border`}
       >
         <Navbar>
           <NavBody>
@@ -107,12 +109,24 @@ function App(): JSX.Element {
             {/* Desktop Nav Items - using NavItems component for better spacing */}
             <NavItems items={navItems} onItemClick={handleNavClick} />
             
-            <div className="flex items-center gap-4 ml-4">
+            <div className="flex items-center gap-3 ml-4">
+              <ThemeToggle />
               <Link to="/contact" onClick={handleNavClick}>
-                <NavbarButton variant="primary" className="bg-black text-white hover:bg-gray-800">
-                  Get Started
+                <NavbarButton as="span" variant="secondary">
+                  Get in Touch
                 </NavbarButton>
               </Link>
+              <NavbarButton
+                as="a"
+                href={PRODUCT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="gradient"
+                className="inline-flex items-center gap-1 text-white"
+              >
+                StartupArk
+                <ArrowUpRight size={16} />
+              </NavbarButton>
             </div>
           </NavBody>
 
@@ -120,10 +134,13 @@ function App(): JSX.Element {
           <MobileNav>
             <MobileNavHeader>
               <NavbarLogo />
-              <MobileNavToggle
-                isOpen={isMobileMenuOpen}
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              />
+              <div className="flex items-center gap-2">
+                <ThemeToggle />
+                <MobileNavToggle
+                  isOpen={isMobileMenuOpen}
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                />
+              </div>
             </MobileNavHeader>
 
             <MobileNavMenu isOpen={isMobileMenuOpen} onClose={closeMobileMenu}>
@@ -132,7 +149,7 @@ function App(): JSX.Element {
                   key={`mobile-link-${idx}`}
                   to={item.link}
                   onClick={handleNavClick}
-                  className="relative text-gray-700 py-3 text-base font-medium transition-colors hover:text-black block"
+                  className="relative text-muted py-3 text-base font-medium transition-colors hover:text-foreground block"
                 >
                   <motion.div
                     whileHover={{ x: 5 }}
@@ -142,12 +159,24 @@ function App(): JSX.Element {
                   </motion.div>
                 </Link>
               ))}
-              <div className="flex w-full flex-col gap-4 mt-4">
+              <div className="flex w-full flex-col gap-3 mt-4">
                 <Link to="/contact" onClick={handleNavClick}>
-                  <NavbarButton variant="primary" className="w-full bg-black text-white hover:bg-gray-800">
-                    Get Started
+                  <NavbarButton as="span" variant="secondary" className="w-full">
+                    Get in Touch
                   </NavbarButton>
                 </Link>
+                <NavbarButton
+                  as="a"
+                  href={PRODUCT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMobileMenu}
+                  variant="gradient"
+                  className="w-full inline-flex items-center justify-center gap-1 text-white"
+                >
+                  StartupArk
+                  <ArrowUpRight size={16} />
+                </NavbarButton>
               </div>
             </MobileNavMenu>
           </MobileNav>

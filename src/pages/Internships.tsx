@@ -152,35 +152,35 @@ const Internships: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               className="lg:w-1/2"
             >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
-                Launch Your <span className="text-gray-600">Tech Career</span>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+                Launch Your <span className="text-accent">Tech Career</span>
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-muted mb-8">
                 Gain real-world experience through our industry-focused internship programs in MERN, MEAN, and modern tech stacks
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <motion.button
                   onClick={() => document.getElementById('apply')?.scrollIntoView({ behavior: 'smooth' })}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-black text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-800 transition-all duration-300"
+                  className="bg-inverse text-inverse-foreground font-bold py-3 px-8 rounded-lg hover:opacity-90 transition-all duration-300"
                 >
                   Apply Now
                 </motion.button>
                 <motion.button
                   onClick={() => document.getElementById('tracks')?.scrollIntoView({ behavior: 'smooth' })}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-transparent border-2 border-black text-black font-bold py-3 px-8 rounded-lg hover:bg-black hover:text-white transition-all duration-300"
+                  className="bg-transparent border-2 border-foreground text-foreground font-bold py-3 px-8 rounded-lg hover:bg-foreground hover:text-background transition-all duration-300"
                 >
                   View Tracks
                 </motion.button>
@@ -190,22 +190,22 @@ const Internships: React.FC = () => {
             {/* 3D Card for Hero */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="lg:w-1/2"
             >
               <CardContainer className="inter-var">
-                <CardBody className="bg-gradient-to-br from-blue-50 to-cyan-50 relative group/card hover:shadow-2xl w-full h-auto rounded-2xl p-8 border border-blue-200">
+                <CardBody className="bg-surface relative group/card hover:shadow-2xl w-full h-auto rounded-2xl p-8 border border-accent/40">
                   <CardItem
                     translateZ="50"
-                    className="text-2xl font-bold text-gray-900 mb-4"
+                    className="text-2xl font-bold text-foreground mb-4"
                   >
                     Why Intern With Us?
                   </CardItem>
                   <CardItem
                     as="p"
                     translateZ="60"
-                    className="text-gray-600 text-lg mb-8"
+                    className="text-muted text-lg mb-8"
                   >
                     Get hands-on experience with industry-standard technologies and real projects
                   </CardItem>
@@ -214,14 +214,14 @@ const Internships: React.FC = () => {
                       <CardItem
                         key={idx}
                         translateZ="30"
-                        className="flex items-center space-x-4 p-4 bg-white/50 rounded-xl"
+                        className="flex items-center space-x-4 p-4 bg-background/60 rounded-xl"
                       >
-                        <div className="text-blue-600">
+                        <div className="text-accent">
                           {benefit.icon}
                         </div>
                         <div>
-                          <div className="font-bold text-gray-900">{benefit.title}</div>
-                          <div className="text-sm text-gray-600">{benefit.description}</div>
+                          <div className="font-bold text-foreground">{benefit.title}</div>
+                          <div className="text-sm text-muted">{benefit.description}</div>
                         </div>
                       </CardItem>
                     ))}
@@ -234,30 +234,30 @@ const Internships: React.FC = () => {
       </section>
 
       {/* Benefits with 3D Cards */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">
-            Why <span className="text-gray-600">Intern</span> With Us?
+          <h2 className="text-4xl font-bold text-center mb-16 text-foreground">
+            Why <span className="text-accent">Intern</span> With Us?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {benefits.map((benefit, idx) => (
               <CardContainer key={idx} containerClassName="w-full h-full">
-                <CardBody className="bg-gray-50 relative group/card hover:shadow-2xl w-full h-full rounded-xl p-8 text-center border border-gray-200">
+                <CardBody className="bg-surface relative group/card hover:shadow-2xl w-full h-full rounded-xl p-8 text-center border border-border">
                   <CardItem
                     translateZ="50"
-                    className="text-gray-900 mb-6"
+                    className="text-accent mb-6"
                   >
                     {benefit.icon}
                   </CardItem>
                   <CardItem
                     translateZ="60"
-                    className="text-xl font-bold mb-4 text-gray-900"
+                    className="text-xl font-bold mb-4 text-foreground"
                   >
                     {benefit.title}
                   </CardItem>
                   <CardItem
                     translateZ="50"
-                    className="text-gray-600"
+                    className="text-muted"
                   >
                     {benefit.description}
                   </CardItem>
@@ -269,31 +269,31 @@ const Internships: React.FC = () => {
       </section>
 
       {/* Internship Tracks with 3D Cards */}
-      <section id="tracks" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section id="tracks" className="py-20 bg-surface">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">
-            Internship <span className="text-gray-600">Tracks</span>
+          <h2 className="text-4xl font-bold text-center mb-4 text-foreground">
+            Internship <span className="text-accent">Tracks</span>
           </h2>
-          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+          <p className="text-muted text-center mb-12 max-w-2xl mx-auto">
             Choose from our specialized tracks designed to match industry demands
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <button
               onClick={() => setSelectedTrack('all')}
-              className={`px-6 py-2 rounded-full ${selectedTrack === 'all' ? 'bg-black text-white' : 'bg-white text-gray-700 border border-gray-300 hover:border-black'}`}
+              className={`px-6 py-2 rounded-full transition-colors ${selectedTrack === 'all' ? 'bg-inverse text-inverse-foreground' : 'bg-background text-muted border border-border hover:border-accent'}`}
             >
               All Tracks
             </button>
             <button
               onClick={() => setSelectedTrack('open')}
-              className={`px-6 py-2 rounded-full ${selectedTrack === 'open' ? 'bg-black text-white' : 'bg-white text-gray-700 border border-gray-300 hover:border-black'}`}
+              className={`px-6 py-2 rounded-full transition-colors ${selectedTrack === 'open' ? 'bg-inverse text-inverse-foreground' : 'bg-background text-muted border border-border hover:border-accent'}`}
             >
               Open Positions
             </button>
             <button
               onClick={() => setSelectedTrack('limited')}
-              className={`px-6 py-2 rounded-full ${selectedTrack === 'limited' ? 'bg-black text-white' : 'bg-white text-gray-700 border border-gray-300 hover:border-black'}`}
+              className={`px-6 py-2 rounded-full transition-colors ${selectedTrack === 'limited' ? 'bg-inverse text-inverse-foreground' : 'bg-background text-muted border border-border hover:border-accent'}`}
             >
               Limited Seats
             </button>
@@ -304,45 +304,45 @@ const Internships: React.FC = () => {
               .filter(track => selectedTrack === 'all' || track.status === selectedTrack)
               .map((track, idx) => (
                 <CardContainer key={idx} containerClassName="w-full h-full">
-                  <CardBody className={`bg-gradient-to-r ${track.color} relative group/card hover:shadow-2xl w-full h-full rounded-2xl p-8 border border-opacity-20`}>
+                  <CardBody className="bg-background relative group/card hover:shadow-2xl hover:border-accent transition-colors w-full h-full rounded-2xl p-8 border border-border">
                     <div className="flex justify-between items-start mb-6">
                       <CardItem
                         translateZ="50"
-                        className="p-3 bg-white/20 backdrop-blur-sm rounded-lg text-white"
+                        className="p-3 bg-surface-2 rounded-lg text-accent"
                       >
                         {track.icon}
                       </CardItem>
                       <CardItem
                         translateZ="50"
                         className={`px-3 py-1 rounded-full text-sm font-medium ${
-                          track.status === 'open' 
-                            ? 'bg-green-900/30 text-green-200' 
-                            : 'bg-yellow-900/30 text-yellow-200'
+                          track.status === 'open'
+                            ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
+                            : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300'
                         }`}
                       >
                         {track.status === 'open' ? 'Open' : 'Limited Seats'}
                       </CardItem>
                     </div>
-                    
+
                     <CardItem
                       translateZ="60"
-                      className="text-2xl font-bold mb-4 text-white"
+                      className="text-2xl font-bold mb-4 text-foreground"
                     >
                       {track.title}
                     </CardItem>
                     <CardItem
                       translateZ="50"
-                      className="text-white/90 mb-6"
+                      className="text-muted mb-6"
                     >
                       {track.description}
                     </CardItem>
-                    
+
                     <CardItem
                       translateZ="40"
                       className="mb-6"
                     >
-                      <div className="flex items-center text-white/80 mb-2">
-                        <FaCalendarAlt className="mr-2" />
+                      <div className="flex items-center text-muted mb-2">
+                        <FaCalendarAlt className="mr-2 text-accent" />
                         <span className="font-medium">Duration: {track.duration}</span>
                       </div>
                       <div className="flex flex-wrap gap-2">
@@ -350,14 +350,14 @@ const Internships: React.FC = () => {
                           <CardItem
                             key={sIdx}
                             translateZ="30"
-                            className="px-3 py-1 bg-white/20 rounded-full text-sm text-white"
+                            className="px-3 py-1 bg-surface-2 rounded-full text-sm text-foreground"
                           >
                             {skill}
                           </CardItem>
                         ))}
                       </div>
                     </CardItem>
-                    
+
                     <CardItem
                       translateZ={20}
                       as="button"
@@ -366,7 +366,7 @@ const Internships: React.FC = () => {
                         document.getElementById('apply')?.scrollIntoView({ behavior: 'smooth' });
                         setFormData(prev => ({ ...prev, track: track.id }));
                       }}
-                      className="w-full bg-white text-gray-900 font-bold py-3 rounded-lg hover:bg-gray-100 transition-all duration-300"
+                      className="w-full bg-inverse text-inverse-foreground font-bold py-3 rounded-lg hover:opacity-90 transition-all duration-300"
                     >
                       Apply Now
                     </CardItem>
@@ -378,26 +378,26 @@ const Internships: React.FC = () => {
       </section>
 
       {/* Application Form */}
-      <section id="apply" className="py-20 bg-white">
+      <section id="apply" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">
-              Apply for <span className="text-gray-600">Internship</span>
+            <h2 className="text-4xl font-bold text-center mb-4 text-foreground">
+              Apply for <span className="text-accent">Internship</span>
             </h2>
-            <p className="text-gray-600 text-center mb-12">
+            <p className="text-muted text-center mb-12">
               Fill out the form below to start your application
             </p>
 
             {status && (
-              <div className={`mb-6 p-4 rounded-lg ${status.includes('successfully') ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+              <div className={`mb-6 p-4 rounded-lg ${status.includes('successfully') ? 'bg-green-50 text-green-800 border border-green-200 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800' : 'bg-red-50 text-red-800 border border-red-200 dark:bg-red-900/30 dark:text-red-300 dark:border-red-800'}`}>
                 {status}
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 rounded-2xl p-8 border border-gray-200">
+            <form onSubmit={handleSubmit} className="space-y-6 bg-surface rounded-2xl p-8 border border-border">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2" htmlFor="name">
+                  <label className="block text-muted font-medium mb-2" htmlFor="name">
                     Full Name *
                   </label>
                   <input
@@ -407,13 +407,13 @@ const Internships: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-900 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+                    className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
                     placeholder="John Doe"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2" htmlFor="email">
+                  <label className="block text-muted font-medium mb-2" htmlFor="email">
                     Email Address *
                   </label>
                   <input
@@ -423,7 +423,7 @@ const Internships: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-900 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+                    className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -431,7 +431,7 @@ const Internships: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2" htmlFor="phone">
+                  <label className="block text-muted font-medium mb-2" htmlFor="phone">
                     Phone Number *
                   </label>
                   <input
@@ -441,13 +441,13 @@ const Internships: React.FC = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-900 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+                    className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
                     placeholder="+91 98765 43210"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2" htmlFor="college">
+                  <label className="block text-muted font-medium mb-2" htmlFor="college">
                     College/University *
                   </label>
                   <input
@@ -457,14 +457,14 @@ const Internships: React.FC = () => {
                     value={formData.college}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-900 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+                    className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
                     placeholder="Your College Name"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-gray-700 font-medium mb-2" htmlFor="track">
+                <label className="block text-muted font-medium mb-2" htmlFor="track">
                   Preferred Track *
                 </label>
                 <select
@@ -473,7 +473,7 @@ const Internships: React.FC = () => {
                   value={formData.track}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-900 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+                  className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
                 >
                   <option value="">Select a track</option>
                   {internshipTracks.map((track, idx) => (
@@ -485,7 +485,7 @@ const Internships: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-gray-700 font-medium mb-2" htmlFor="experience">
+                <label className="block text-muted font-medium mb-2" htmlFor="experience">
                   Previous Experience (if any)
                 </label>
                 <textarea
@@ -494,13 +494,13 @@ const Internships: React.FC = () => {
                   value={formData.experience}
                   onChange={handleChange}
                   rows={3}
-                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-900 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+                  className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
                   placeholder="Briefly describe your previous experience..."
                 ></textarea>
               </div>
 
               <div>
-                <label className="block text-gray-700 font-medium mb-2" htmlFor="portfolio">
+                <label className="block text-muted font-medium mb-2" htmlFor="portfolio">
                   Portfolio/GitHub Link
                 </label>
                 <input
@@ -509,7 +509,7 @@ const Internships: React.FC = () => {
                   name="portfolio"
                   value={formData.portfolio}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-900 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/20"
+                  className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
                   placeholder="https://github.com/username"
                 />
               </div>
@@ -518,7 +518,7 @@ const Internships: React.FC = () => {
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-black text-white font-bold py-4 px-6 rounded-lg hover:bg-gray-800 transition-all duration-300"
+                className="w-full bg-inverse text-inverse-foreground font-bold py-4 px-6 rounded-lg hover:opacity-90 transition-all duration-300"
               >
                 Submit Application
               </motion.button>

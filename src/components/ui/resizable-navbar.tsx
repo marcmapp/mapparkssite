@@ -98,7 +98,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       }}
       className={cn(
         "relative z-[60] mx-auto hidden w-full flex-row items-center justify-between self-start px-4 py-3 lg:flex",
-        "bg-white/95 backdrop-blur-md",
+        "bg-background/95 backdrop-blur-md",
         className,
       )}
     >
@@ -122,14 +122,14 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         <a
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-2 py-1 text-gray-700 hover:text-black transition-colors"
+          className="relative px-2 py-1 text-muted hover:text-foreground transition-colors"
           key={`link-${idx}`}
           href={item.link}
         >
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-md bg-gray-100"
+              className="absolute inset-0 h-full w-full rounded-md bg-surface-2"
             />
           )}
           <span className="relative z-20">{item.name}</span>
@@ -151,7 +151,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         damping: 50,
       }}
       className={cn(
-        "relative z-50 mx-auto flex w-full flex-col items-center justify-between bg-white/95 px-4 py-3 lg:hidden",
+        "relative z-50 mx-auto flex w-full flex-col items-center justify-between bg-background/95 px-4 py-3 lg:hidden",
         className,
       )}
     >
@@ -190,7 +190,7 @@ export const MobileNavMenu = ({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-2 rounded-b-lg bg-white px-4 py-4 shadow-lg",
+            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-2 rounded-b-lg bg-background border-t border-border px-4 py-4 shadow-lg",
             className,
           )}
         >
@@ -209,9 +209,9 @@ export const MobileNavToggle = ({
   onClick: () => void;
 }) => {
   return isOpen ? (
-    <IconX className="text-black" onClick={onClick} />
+    <IconX className="text-foreground" onClick={onClick} />
   ) : (
-    <IconMenu2 className="text-black" onClick={onClick} />
+    <IconMenu2 className="text-foreground" onClick={onClick} />
   );
 };
 
@@ -224,7 +224,7 @@ export const NavbarLogo = () => {
     <a
       href="/"
       onClick={scrollToTop}
-      className="relative z-20 flex items-center space-x-4 px-2 py-1 text-sm font-normal text-black"
+      className="relative z-20 flex items-center space-x-4 px-2 py-1 text-sm font-normal text-foreground"
     >
       {/* Even larger logo container */}
       <motion.div
@@ -237,16 +237,16 @@ export const NavbarLogo = () => {
           <img
             src={logo}
             alt="Mapp Arks Logo"
-            width={80}  // Even larger
-            height={80} // Even larger
-            className="h-16 w-auto" // h-16 is very large
+            width={80}
+            height={80}
+            className="h-16 w-auto dark:invert"
           />
         </div>
         
         {/* Company name - smaller relative to the huge logo */}
         <div className="flex flex-col ml-4">
-          <span className="font-bold text-lg text-black">MAPP</span> {/* Same size or smaller */}
-          <span className="text-xs bg-transparent bg-gradient-to-r from-cyan-600 to-sky-700 text-transparent bg-clip-text -mt-1">
+          <span className="font-bold text-lg text-foreground">MAPP</span>
+          <span className="text-xs font-semibold bg-transparent bg-gradient-to-r from-accent to-accent-strong text-transparent bg-clip-text -mt-1">
             ARKS
           </span>
         </div>
@@ -276,10 +276,10 @@ export const NavbarButton = ({
     "px-4 py-2 rounded-md text-sm font-medium relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 
   const variantStyles = {
-    primary: "bg-black text-white hover:bg-gray-800",
-    secondary: "bg-transparent text-gray-700 border border-gray-300 hover:bg-gray-50",
-    dark: "bg-gray-900 text-white hover:bg-gray-800",
-    gradient: "bg-gradient-to-r from-blue-600 to-purple-600 text-white",
+    primary: "bg-inverse text-inverse-foreground hover:opacity-90",
+    secondary: "bg-transparent text-foreground border border-border hover:bg-surface-2",
+    dark: "bg-inverse text-inverse-foreground hover:opacity-90",
+    gradient: "bg-gradient-to-r from-accent to-accent-strong text-white",
   };
 
   return (

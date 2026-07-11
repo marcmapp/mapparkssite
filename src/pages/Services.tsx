@@ -171,35 +171,35 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               className="lg:w-1/2"
             >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
-                Our <span className="text-gray-600">Service</span> Portfolio
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+                Our <span className="text-accent">Service</span> Portfolio
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-muted mb-8">
                 Comprehensive digital solutions tailored to your business needs
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <motion.button
                   onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-black text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-800 transition-all duration-300"
+                  className="bg-inverse text-inverse-foreground font-bold py-3 px-8 rounded-lg hover:opacity-90 transition-all duration-300"
                 >
                   Explore Services
                 </motion.button>
                 <motion.a
                   href="/contact"
                   whileHover={{ scale: 1.05 }}
-                  className="bg-transparent border-2 border-black text-black font-bold py-3 px-8 rounded-lg hover:bg-black hover:text-white transition-all duration-300 text-center"
+                  className="bg-transparent border-2 border-foreground text-foreground font-bold py-3 px-8 rounded-lg hover:bg-foreground hover:text-background transition-all duration-300 text-center"
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   Get Started
@@ -210,22 +210,22 @@ const Services: React.FC = () => {
             {/* 3D Card for Hero */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="lg:w-1/2"
             >
               <CardContainer className="inter-var">
-                <CardBody className="bg-gradient-to-br from-blue-50 to-cyan-50 relative group/card hover:shadow-2xl w-full h-auto rounded-2xl p-8 border border-blue-200">
+                <CardBody className="bg-surface relative group/card hover:shadow-2xl w-full h-auto rounded-2xl p-8 border border-accent/40">
                   <CardItem
                     translateZ="50"
-                    className="text-2xl font-bold text-gray-900 mb-4"
+                    className="text-2xl font-bold text-foreground mb-4"
                   >
                     Technology Specializations
                   </CardItem>
                   <CardItem
                     as="p"
                     translateZ="60"
-                    className="text-gray-600 text-lg mb-8"
+                    className="text-muted text-lg mb-8"
                   >
                     We specialize in modern tech stacks and cutting-edge solutions
                   </CardItem>
@@ -234,14 +234,14 @@ const Services: React.FC = () => {
                       <CardItem
                         key={idx}
                         translateZ="30"
-                        className="flex items-center space-x-3 p-4 bg-white/50 rounded-xl"
+                        className="flex items-center space-x-3 p-4 bg-background/60 rounded-xl"
                       >
-                        <div className="text-blue-600">
+                        <div className="text-accent">
                           {spec.icon}
                         </div>
                         <div>
-                          <div className="font-bold text-gray-900">{spec.title}</div>
-                          <div className="text-sm text-gray-600">{spec.description}</div>
+                          <div className="font-bold text-foreground">{spec.title}</div>
+                          <div className="text-sm text-muted">{spec.description}</div>
                         </div>
                       </CardItem>
                     ))}
@@ -254,100 +254,84 @@ const Services: React.FC = () => {
       </section>
 
       {/* Specializations */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-background">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-4">
             {specializations.map((spec, idx) => (
-              <CardContainer key={idx} containerClassName="h-20">
-                <CardBody className="bg-gray-50 relative group/card hover:shadow-lg rounded-full px-6 py-3 border border-gray-200">
-                  <div className="flex items-center space-x-3">
-                    <CardItem
-                      translateZ="30"
-                      className="text-gray-900"
-                    >
-                      {spec.icon}
-                    </CardItem>
-                    <div>
-                      <CardItem
-                        translateZ="40"
-                        className="font-bold text-gray-900"
-                      >
-                        {spec.title}
-                      </CardItem>
-                      <CardItem
-                        translateZ="30"
-                        className="text-sm text-gray-600"
-                      >
-                        {spec.description}
-                      </CardItem>
-                    </div>
-                  </div>
-                </CardBody>
-              </CardContainer>
+              <div
+                key={idx}
+                className="flex items-center gap-3 bg-surface hover:border-accent hover:shadow-lg transition-all duration-300 rounded-full px-6 py-3 border border-border"
+              >
+                <span className="text-accent shrink-0">{spec.icon}</span>
+                <div>
+                  <div className="font-bold text-foreground leading-tight">{spec.title}</div>
+                  <div className="text-sm text-muted">{spec.description}</div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Main Services with 3D Cards */}
-      <section id="services" className="py-20 bg-gradient-to-b from-white to-gray-50">
+      <section id="services" className="py-20 bg-surface">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {mainServices.map((service, idx) => (
               <CardContainer key={idx} containerClassName="w-full h-full">
-                <CardBody className={`bg-gradient-to-r ${service.color} relative group/card hover:shadow-2xl w-full h-full rounded-2xl p-8 border border-opacity-20`}>
+                <CardBody className="bg-background relative group/card hover:shadow-2xl hover:border-accent w-full h-full rounded-2xl p-8 border border-border transition-colors">
                   <CardItem
                     translateZ="50"
-                    className="p-3 bg-white/20 backdrop-blur-sm rounded-lg w-fit mb-6"
+                    className="p-3 bg-surface-2 rounded-lg w-fit mb-6"
                   >
-                    <div className="text-white">
+                    <div className="text-accent">
                       {service.icon}
                     </div>
                   </CardItem>
                   <CardItem
                     translateZ="60"
-                    className="text-2xl font-bold mb-4 text-white"
+                    className="text-2xl font-bold mb-4 text-foreground"
                   >
                     {service.title}
                   </CardItem>
-                  
+
                   <CardItem
                     translateZ="50"
-                    className="text-white/90 mb-6 leading-relaxed"
+                    className="text-muted mb-6 leading-relaxed"
                   >
                     {service.description}
                   </CardItem>
-                  
+
                   <div className="mb-6">
                     <CardItem
                       translateZ="40"
                       className="mb-4"
                     >
-                      <h3 className="font-bold text-white mb-3">Key Features</h3>
+                      <h3 className="font-bold text-foreground mb-3">Key Features</h3>
                       <ul className="space-y-2">
                         {service.features.slice(0, 3).map((feature, fIdx) => (
                           <CardItem
                             key={fIdx}
                             translateZ="30"
-                            className="flex items-start text-white/80"
+                            className="flex items-start text-muted"
                           >
-                            <div className="text-white mr-3 mt-1">✓</div>
+                            <div className="text-accent mr-3 mt-1">✓</div>
                             <span>{feature}</span>
                           </CardItem>
                         ))}
                       </ul>
                     </CardItem>
-                    
+
                     <CardItem
                       translateZ="40"
                     >
-                      <h3 className="font-bold text-white mb-3">Ideal For</h3>
+                      <h3 className="font-bold text-foreground mb-3">Ideal For</h3>
                       <div className="flex flex-wrap gap-2">
                         {service.idealFor.slice(0, 2).map((item, iIdx) => (
                           <CardItem
                             key={iIdx}
                             translateZ="20"
-                            className="px-3 py-1 bg-white/20 rounded-full text-sm text-white"
+                            className="px-3 py-1 bg-surface-2 rounded-full text-sm text-foreground"
                           >
                             {item}
                           </CardItem>
@@ -355,12 +339,12 @@ const Services: React.FC = () => {
                       </div>
                     </CardItem>
                   </div>
-                  
+
                   <CardItem
                     translateZ={20}
                     as="a"
                     href="/contact"
-                    className="w-full text-center bg-white text-gray-900 font-bold py-3 px-6 rounded-lg hover:bg-gray-100 transition-all duration-300 block"
+                    className="w-full text-center bg-inverse text-inverse-foreground font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-all duration-300 block"
                     onClick={() => window.scrollTo(0, 0)}
                   >
                     Get This Service

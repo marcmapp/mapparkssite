@@ -1,14 +1,5 @@
-body {
-    
-   font-family: "Merriweather", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
-
-/* .kode-mono-<uniquifier> {
-  font-family: "Kode Mono", monospace;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-} */
+/*
+ * Typography is standardized on Inter (loaded in index.html and set on
+ * body in index.css). The previous Merriweather serif override was
+ * removed so the modern sans-serif system is used consistently.
+ */

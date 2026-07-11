@@ -2,51 +2,65 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Apply the saved / preferred theme before first paint to avoid a flash -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
     
     <!-- Title and Description -->
     <title>Mapp Arks - Tech Innovations & Solutions</title>
-    <meta name="description" content="Mapp Arks  is a tech startup focused on developing flagship products and solving complex issues in various domains. Learn more about our cutting-edge solutions.">
+    <meta name="description" content="Mapp Arks is a tech studio focused on custom software, web & e-commerce development, cloud/DevOps, courses and internships. Explore our cutting-edge solutions.">
 
     <!-- Favicon -->
-    <link rel="icon" href="./public/MP-white-bg.png" type="image/x-icon" />
-    
+    <link rel="icon" href="/favicoon.ico" type="image/x-icon" />
+    <link rel="icon" href="/MP-white-bg.png" type="image/png" />
+
     <!-- Open Graph Meta Tags (for social sharing) -->
-    <meta property="og:title" content="MarkPyroPrime - Tech Innovations & Solutions">
-    <meta property="og:description" content="Discover innovative tech solutions with MarkPyroPrime . We're committed to revolutionizing the industry with our flagship products.">
-    <meta property="og:image" content="./src/assets/MP-removebg-preview.png"> <!-- Update with the actual image URL -->
-    <meta property="og:url" content="https://markpyroprime.com">
+    <meta property="og:title" content="Mapp Arks - Tech Innovations & Solutions">
+    <meta property="og:description" content="Mapp Arks turns your vision into powerful digital solutions — custom software, websites, e-commerce, cloud and more.">
+    <meta property="og:image" content="https://mapparks.com/MP-white-bg.png">
+    <meta property="og:url" content="https://mapparks.com">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="MarkPyroPrime - Tech Innovations & Solutions">
-    <meta name="twitter:description" content="Join MarkPyroPrime  in the journey of tech innovation. Explore our products and solutions.">
-    <meta name="twitter:image" content="./src/assets/1 (2).png"> <!-- Update with the actual image URL -->
+    <meta name="twitter:title" content="Mapp Arks - Tech Innovations & Solutions">
+    <meta name="twitter:description" content="Join Mapp Arks on the journey of tech innovation. Explore our products and solutions.">
+    <meta name="twitter:image" content="https://mapparks.com/MP-white-bg.png">
 
     <!-- Canonical Link (prevents duplicate content issues) -->
-    <link rel="canonical" href="https://markpyroprime.com">
+    <link rel="canonical" href="https://mapparks.com">
 
     <!-- Robots Meta Tag -->
     <meta name="robots" content="index, follow">
 
     <!-- Keywords Meta Tag -->
-    <meta name="keywords" content="MarkPyroPrime, , tech startup, innovative solutions, flagship products, SaaS, technology, Madurai, India">
+    <meta name="keywords" content="Mapp Arks, mapparks, tech studio, software development, web development, e-commerce, cloud, DevOps, courses, internships, Madurai, India">
 
     <!-- Author Meta Tag -->
-    <meta name="author" content="MarkPyroPrime Team">
+    <meta name="author" content="Mapp Arks Team">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Structured Data (JSON-LD for better SEO) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "MarkPyroPrime",
-        "url": "https://markpyroprime.com",
-        "logo": "./src/assets/MP-removebg-preview.png",  <!-- Update with the actual logo URL -->
+        "name": "Mapp Arks",
+        "url": "https://mapparks.com",
+        "logo": "https://mapparks.com/MP-white-bg.png",
         "sameAs": [
           "https://www.facebook.com/share/Tx7ft6ZEipw9BNyD/?mibextid=qi2Omg",
           "https://x.com/_Mp",
@@ -59,7 +73,7 @@
           "telephone": "+91-9342139631",
           "contactType": "Customer Service"
         },
-        "description": "MarkPyroPrime  is a tech startup focused on developing flagship products and solving complex issues in various domains.",
+        "description": "Mapp Arks is a tech studio focused on custom software, web and e-commerce development, cloud solutions, courses and internships.",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Gladway,Avaniapuram",
